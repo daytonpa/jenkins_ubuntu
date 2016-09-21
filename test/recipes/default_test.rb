@@ -9,24 +9,29 @@
 describe user('jenkins') do
     it { should exist }
     its('group') { should eq 'jenkins' }
-    its('home') { should eq '/var/lib/jenkins'}
 end
 describe group('jenkins') do
     it { should exist }
 end
 
 # Directories
+# - Apt Repository location
+describe directory('/etc/apt/sources.list.d') do
+    it { should exist }
+    its('owner') { should cmp 'root' }
+    its('mode') { should cmp '0755'}
+end
 # - Jenkins home
 describe directory('/var/lib/jenkins') do
     it { should exist }
     its('owner') { should cmp 'jenkins' }
-    its('mode') { should cmp 0755 }
+    its('mode') { should cmp '0755' }
 end
 # - Jenkins log
 describe directory('/var/log/jenkins') do
     it { should exist }
     its('owner') { should cmp 'jenkins' }
-    its('mode') { should cmp 0775 }
+    its('mode') { should cmp '0755' }
 end
 
 ## IPAddress ##
@@ -38,21 +43,15 @@ describe port(8080) do
 end
 
 ## Packages ##
-describe package('java') do
+describe package('openjdk-7-jdk') do
     it { should be_installed }
 end
 describe package('jenkins') do
     it { should be_installed }
 end
 
-# Jenkins configuration file
-describe file('/var/lib/jenkins/config.xml') do
-    it { should exist }
-end
-
 ## Services ##
 describe service('jenkins') do
-    it { should be_installed }
     it { should be_enabled }
     it { should be_running }
 end

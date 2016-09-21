@@ -29,7 +29,7 @@ default['jenkins_ubuntu'].tap do |jenkins|
     # Configuration attributes:
     # - Arguments to pass to Java
     jenkins['java_args'] = nil
-    # - Jenkins default listening address  ('127.0.0.1')
+    # - Jenkins default listening address  ('0.0.0.0')
     jenkins['listen_address'] = '0.0.0.0'
     # - Jenkins default listening port  ('8080')
     jenkins['listen_port'] = '8080'

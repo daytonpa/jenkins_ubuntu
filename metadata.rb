@@ -1,6 +1,6 @@
 name 'jenkins_ubuntu'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Patrick Dayton'
+maintainer_email 'daytonpa@gmail.com'
 license 'all_rights'
 description 'Installs/Configures jenkins_ubuntu'
 long_description 'Installs/Configures jenkins_ubuntu'
@@ -14,6 +14,6 @@ version '0.1.0'
 # gets a `View Source` link
 # source_url 'https://github.com/<insert_org_here>/jenkins_ubuntu' if respond_to?(:source_url)
 
-%w( jenkins apt java sysctl ).each do |cookbook|
+%w( apt java sysctl ).each do |cookbook|
     depends cookbook
 end
