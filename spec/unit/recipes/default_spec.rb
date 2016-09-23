@@ -33,6 +33,7 @@ describe 'jenkins_ubuntu::default' do
   	describe file('/etc/apt/apt.conf.d') do
   		it { should exist }
         it { should be_directory }
+        it { should be_mode '755' }
   	end
 
     # Jenkins logs directory
